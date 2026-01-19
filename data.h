@@ -13,7 +13,7 @@ struct bookData {
   char department[25];
 };
 
-int arrayLength = 1;
-int books = 0;
+extern int arrayLength;
+extern int books;
 
 #endif //LIBRARIAN_DATA_H
