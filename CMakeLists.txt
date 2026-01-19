@@ -3,4 +3,6 @@ project(librarian C)
 
 set(CMAKE_C_STANDARD 23)
 
-add_executable(librarian main.c)
+add_executable(librarian main.c
+        data.h
+)
