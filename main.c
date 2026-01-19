@@ -5,27 +5,33 @@
 
 #include "data.h"
 
-void readData(struct bookData *arrayToBeSaved);
-void changeArraySize(struct bookData *arrayToChanged , int sizeToChange , int operation);
+struct bookData *readData(struct bookData *arrayToBeSaved);
 
 
 int main(void) {
     struct bookData *bookArray = malloc(arrayLength *sizeof(struct bookData));
-    readData(bookArray);
+    bookArray = readData(bookArray);
+
+    printf("%d", bookArray[1].year);
+
     free(bookArray);
     return 0;
 }
 
+//Read for one book the data from books.txt and gives the data into the array
 void readBook(struct bookData *arrayToBeSaved  , int index , FILE *fptr) {
-    char trash[5];
+    char temp[5];
     char authorRead[50];
     char titleRead[50];
     char publisherRead[50];
     char yearRead[50];
     char departmentRead[50];
 
+    //Makes the reading correct
+    if (index == 0) {
+        fgets(temp, 5, fptr);
+    }
 
-    fgets(trash, sizeof(trash), fptr);
     fgets(authorRead, 50, fptr);
     fgets(titleRead, 50, fptr);
     fgets(publisherRead, 50, fptr);
@@ -41,27 +47,30 @@ void readBook(struct bookData *arrayToBeSaved  , int index , FILE *fptr) {
     strcpy(arrayToBeSaved[index].department, departmentRead);
 }
 
-void readData(struct bookData *arrayToBeSaved) {
+struct bookData *readData(struct bookData *arrayToBeSaved) {
     FILE *fptr = fopen("books.txt", "r");
 
     // Reading the file data using fgets() in the
     // form of a block of size 30 bytes
+    //Gets how many books are in books.txt
     char buff[2];
     fgets(buff, sizeof(buff), fptr);
     books = atoi(buff);
 
-
+    //resizes array to correct size
     arrayLength += (books -1);
     struct bookData *array = realloc(arrayToBeSaved , sizeof(struct bookData)* arrayLength);
     arrayToBeSaved = array;
 
+    //reads every book into the *arrayToBeSaved
     int i = 0;
-    while (i < 2) {
+    while (i < books) {
         readBook(arrayToBeSaved  , i , fptr);
         i++;
     }
 
-
-    printf("%d" , arrayToBeSaved[1].year);
+    //Closes the file
     fclose(fptr);
-};
+
+    return arrayToBeSaved;
+}
