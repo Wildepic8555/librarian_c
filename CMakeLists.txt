@@ -5,8 +5,9 @@ set(CMAKE_C_STANDARD 23)
 
 add_executable(librarian main.c
         data.h
-        readDataFromTxt.c
         readBook.c
         readBook.h
         data.c
+        sorting.c
+        sorting.h
 )

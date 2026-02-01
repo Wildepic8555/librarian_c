@@ -32,6 +32,7 @@ void readBook(struct bookData *arrayToBeSaved  , int index , FILE *fptr) {
     strcpy(arrayToBeSaved[index].publisher, publisherRead);
     arrayToBeSaved[index].year = yearReadInt;
     strcpy(arrayToBeSaved[index].department, departmentRead);
+    arrayToBeSaved[index].showable = true;
 }
 
 struct bookData *readData(struct bookData *arrayToBeSaved) {

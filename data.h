@@ -11,6 +11,7 @@ struct bookData {
   char publisher[50];
   int year;
   char department[25];
+  bool showable;
 };
 
 extern int arrayLength;
