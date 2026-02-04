@@ -6,11 +6,11 @@
 #define LIBRARIAN_SORTING_H
 
 struct sortingParameter {
-    char author[50];
-    char title[50];
-    char publisher[50];
+    char author[21];
+    char title[21];
+    char publisher[21];
     int year;
-    char department[25];
+    char department[21];
 };
 
 struct bookData *sort(struct bookData *arrayToBeSorted , struct  sortingParameter sortingParameter);

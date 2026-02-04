@@ -10,4 +10,6 @@ add_executable(librarian main.c
         data.c
         sorting.c
         sorting.h
+        showBooks.c
+        showBooks.h
 )

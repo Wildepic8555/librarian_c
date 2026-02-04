@@ -11,6 +11,7 @@
 //Sorts which book is showable
 struct bookData *sort(struct bookData *arrayToBeSorted , struct sortingParameter sortingParameter) {
     for (int i = 0 ; i < arrayLength ; i++) {
+        arrayToBeSorted[i].showable = true;
 
         if (sortingParameter.year != arrayToBeSorted[i].year && sortingParameter.year > 0) {
             arrayToBeSorted[i].showable = false;
