@@ -12,4 +12,6 @@ add_executable(librarian main.c
         sorting.h
         showBooks.c
         showBooks.h
+        sortingParameterInput.c
+        sortingParameterInput.h
 )

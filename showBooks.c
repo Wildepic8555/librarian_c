@@ -7,6 +7,8 @@
 #include "data.h"
 
 struct bookData *showBooks(struct bookData *arrayToBePrinted) {
+    int unshowedBooks =0;
+
     for (int i = 0; i < books; i++) {
         if (arrayToBePrinted[i].showable == true) {
             printf("Title:      %21s" , arrayToBePrinted[i].title);
@@ -16,5 +18,13 @@ struct bookData *showBooks(struct bookData *arrayToBePrinted) {
             printf("Year:                       %d\n" , arrayToBePrinted[i].year);
             printf("================================\n");
         }
+        else {
+            unshowedBooks++;
+        }
+    }
+
+    if (unshowedBooks == books) {
+        printf("  No Books matching selection\n");
+        printf("================================\n");
     }
 }
